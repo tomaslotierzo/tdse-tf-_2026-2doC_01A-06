@@ -1,3 +1,5 @@
+<img src="https://github.com/tomaslotierzo/tdse-tf-_2026-2doC_01A-06/blob/main/logo-fiuba.png" alt="logo" width="50%">
+
 # Juego Interactivo "Simón Dice"
 
 **Autores:** Tomás Antonio Lotierzo, Joaquín Alvarez, José Valls  
@@ -141,7 +143,7 @@ A diferencia del ejemplo de referencia del "Simón Dice" que se brinda en las co
 A continuación, presentamos el diagrama en bloques del sistema:
 
 <p align="center">
-  <img src="Diagrama_en_Bloques.png" alt="Diagrama en bloques del sistema" width="500">
+  <img src="https://github.com/tomaslotierzo/tdse-tf-_2026-2doC_01A-06/blob/main/Diagrama_en_Bloques.png" alt="Diagrama en bloques del sistema" width="500">
   <br>
   <em>Figura 1: Diagrama en bloques del sistema</em>
 </p>
