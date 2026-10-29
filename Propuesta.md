@@ -1,3 +1,5 @@
+<img src="https://github.com/tomaslotierzo/tdse-tf-_2026-2doC_01A-06/blob/main/logo-fiuba.png" alt="image2" width="50%">
+
 # Juego Interactivo "Simón Dice"
 
 **Autores:** Tomás Antonio Lotierzo, Joaquín Alvarez, José Valls  
