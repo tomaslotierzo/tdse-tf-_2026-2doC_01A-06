@@ -142,14 +142,12 @@ En la tabla 2 se presentan las principales diferencias de diseño entre la soluc
 
 | Aspecto | Solución de referencia | Proyecto propuesto |
 | :--- | :--- | :--- |
-| Sensor analógico | Sensor de luz LDR para ajustar el brillo de los LEDs mediante PWM. | Joystick analógico (ADC) para navegar el menú. No hay ajuste automático de brillo. |
-| Navegación del menú | Exclusivamente con los cuatro botones del juego (atrás, aceptar, arriba, abajo). | Joystick (movimiento horizontal) y un pulsador dedicado de selección. Los cuatro botones quedan reservados para el juego. |
+| Sensor analógico | Sensor de luz LDR para ajustar el brillo de los LEDs mediante PWM. | Joystick analógico (ADC) para navegar el menú. |
+| Navegación del menú | Exclusivamente con los cuatro botones del juego (atrás, aceptar, arriba, abajo). | Joystick y un pulsador dedicado de selección. |
 | Modo fácil o normal | Se reproduce la secuencia completa acumulada. | Se reproduce la secuencia completa acumulada a velocidad lenta. |
 | Modo difícil | Solo se reproduce el nuevo color agregado. | Se reproduce la secuencia completa acumulada a mayor velocidad. |
-| Pantallas del LCD | Bienvenida, selección de dificultad, top 3 de puntajes, juego y despedida. | Bienvenida, menú principal, consulta de récord, nivel actual y Game Over. |
-| Datos en EEPROM | Puntaje máximo, configuración de dificultad y estadísticas (top 3). | Puntaje récord e historial de últimos puntajes, con opción de reseteo desde el menú. |
-| Audio | Tono por color, melodía al superar un nivel, secuencia de error y sonidos de menú. | Tono por color, tono grave en caso de error y tonos cortos en el menú. |
-| Modo de espera | No contemplado. | Atenuación del LCD tras 30 segundos sin interacción. |
+| Pantallas del LCD | Bienvenida, selección de dificultad, top 3 de puntajes, juego y despedida. | Bienvenida, menú principal, consulta de récord, nivel actual y despedida. |
+| Datos en EEPROM | Puntaje máximo, configuración de dificultad y estadísticas (top 3). | Puntaje récord e historial de últimos puntajes. |
 
 <p align="center"><em>Tabla 2: Comparación preliminar entre la solución de referencia y el proyecto propuesto</em></p>
 
