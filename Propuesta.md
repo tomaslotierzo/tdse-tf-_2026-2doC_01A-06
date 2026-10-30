@@ -51,7 +51,7 @@ Escogimos 5 características que consideramos importantes evaluar para este proy
 4. **Complejidad de software:** La dificultad de poder implementar los componentes de hardware (peso: 5).
 5. **Complejidad de hardware:** La dificultad de poder implementar el código necesario de la parte de software (peso: 8).
 
-En la tabla 1 se presenta la matriz comparativa de los tres casos planteados (Básico, Intermedio y Avanzado). Cada caso se puntuó de 1 a 10 en las cinco características definidas y luego se multiplicó por el peso correspondiente, obteniendo el puntaje ponderado y el puntaje total de cada alternativa.
+En la Tabla 1 se presenta la matriz comparativa de los tres casos planteados (Básico, Intermedio y Avanzado). Cada caso se puntuó de 1 a 10 en las cinco características definidas y luego se multiplicó por el peso correspondiente, obteniendo el puntaje ponderado y el puntaje total de cada alternativa.
 
 <table>
   <thead>
@@ -138,9 +138,7 @@ A pesar de que en la matriz ponderada el Caso Básico obtuvo una puntuación má
 
 A diferencia del ejemplo de referencia del "Simón Dice" que se brinda en las consignas del trabajo (https://github.com/tomas-condo/tdse-tf_2-02--/blob/97dc80b53a57eb331f7388a82d46ccadcac6fbcb/readme_requisitos_y_Casos.md), decidimos agregar un sensor analógico de joystick en vez de un sensor de luz LDR que ajuste el brillo de los LEDs, y un pulsador extra que ayude en la navegación de la interfaz del usuario.
 
-En la tabla 2 se presentan las principales diferencias de diseño entre la solución de referencia y el proyecto propuesto. Esta comparación es preliminar y se completará, con el análisis del diseño e implementación de hardware y software, en la memoria final.
-
-En la tabla 2 se presentan las principales diferencias de diseño entre la solución de referencia y el proyecto propuesto, tomadas de sus respectivas tablas de requisitos. Esta comparación es preliminar y se completará, con el análisis del diseño e implementación de hardware y software, en la memoria final.
+En la Tabla 2 se presentan las principales diferencias de diseño entre la solución de referencia y el proyecto propuesto, tomadas de sus respectivas tablas de requisitos. Esta comparación es preliminar y se completará, con el análisis del diseño e implementación de hardware y software, en la memoria final.
 
 | Aspecto | Solución de referencia | Proyecto propuesto |
 | :--- | :--- | :--- |
@@ -159,7 +157,7 @@ En la tabla 2 se presentan las principales diferencias de diseño entre la soluc
 
 ### 1.5. Diagrama en bloques del sistema
 
-En la figura 1 se presenta el diagrama en bloques del sistema. El microcontrolador STM32 NUCLEO-F103RB es el bloque central: recibe las entradas de los cuatro pulsadores de juego, del pulsador de selección y del joystick analógico, y gobierna las salidas, que son los cuatro LEDs, el buzzer y la pantalla LCD 16x2. La pantalla LCD se utiliza como menú de navegación y para mostrar el estado de la partida, mientras que los LEDs y el buzzer trabajan en conjunto para reproducir las secuencias de luces y tonos propias del juego "Simón Dice". Además, el sistema incluye una memoria EEPROM externa, conectada al microcontrolador, que almacena la información de las partidas anteriores, como el historial de puntajes y el puntaje récord.
+En la Figura 1 se presenta el diagrama en bloques del sistema. El microcontrolador STM32 NUCLEO-F103RB es el bloque central: recibe las entradas de los cuatro pulsadores de juego, del pulsador de selección y del joystick analógico, y gobierna las salidas, que son los cuatro LEDs, el buzzer y la pantalla LCD 16x2. La pantalla LCD se utiliza como menú de navegación y para mostrar el estado de la partida, mientras que los LEDs y el buzzer trabajan en conjunto para reproducir las secuencias de luces y tonos propias del juego "Simón Dice". Además, el sistema incluye una memoria EEPROM externa, conectada al microcontrolador, que almacena la información de las partidas anteriores, como el historial de puntajes y el puntaje récord.
 
 <p align="center">
   <img src="https://github.com/tomaslotierzo/tdse-tf-_2026-2doC_01A-06/blob/main/Diagrama_en_Bloques.png" alt="Diagrama en bloques del sistema" width="500">
@@ -183,7 +181,7 @@ En conclusión, el desarrollo de este proyecto en Argentina representa una soluc
 
 ### 2.1. Requisitos del proyecto
 
-En la tabla 3 se detallan los requisitos del proyecto, agrupados por funcionalidad. Cada requisito tiene un identificador único y una descripción de lo que el sistema deberá cumplir.
+En la Tabla 3 se detallan los requisitos del proyecto, agrupados por funcionalidad. Cada requisito tiene un identificador único y una descripción de lo que el sistema deberá cumplir.
 
 | Grupo | ID | Descripción |
 | :--- | :--- | :--- |
@@ -227,7 +225,7 @@ En la tabla 3 se detallan los requisitos del proyecto, agrupados por funcionalid
 
 ### 2.2. Casos de Uso
 
-En las tablas 4 a 6 se presentan tres casos de uso del sistema: inicio de partida, ejecución de ronda y validación de secuencia, y cierre de partida con registro de récord. Cada tabla describe el disparador, las precondiciones, el flujo principal y los flujos alternativos.
+En las Tablas 4 a 6 se presentan tres casos de uso del sistema: inicio de partida, ejecución de ronda y validación de secuencia, y cierre de partida con registro de récord. Cada tabla describe el disparador, las precondiciones, el flujo principal y los flujos alternativos.
 
 ---
 
