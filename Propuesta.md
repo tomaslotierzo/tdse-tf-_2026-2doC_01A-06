@@ -142,14 +142,11 @@ En la tabla 2 se presentan las principales diferencias de diseño entre la soluc
 
 | Aspecto | Solución de referencia | Proyecto propuesto |
 | :--- | :--- | :--- |
-| Sensor analógico | Sensor de luz LDR para ajustar el brillo de los LEDs mediante PWM. | Joystick analógico (ADC) para navegar el menú. |
-| Navegación del menú | Exclusivamente con los cuatro botones del juego (atrás, aceptar, arriba, abajo). | Joystick y un pulsador dedicado de selección. |
-| Modo fácil o normal | Se reproduce la secuencia completa acumulada. | Se reproduce la secuencia completa acumulada a velocidad lenta. |
-| Modo difícil | Solo se reproduce el nuevo color agregado. | Se reproduce la secuencia completa acumulada a mayor velocidad. |
-| Pantallas del LCD | Bienvenida, selección de dificultad, top 3 de puntajes, juego y despedida. | Bienvenida, menú principal, consulta de récord, nivel actual y despedida. |
-| Datos en EEPROM | Puntaje máximo, configuración de dificultad y estadísticas (top 3). | Puntaje récord e historial de últimos puntajes. |
+| Sensor analógico | Sensor de luz LDR para ajustar el brillo de los LEDs mediante PWM. | Joystick analógico para navegar el menú. |
+| Navegación del menú | Exclusivamente con los cuatro botones del juego. | Joystick y un pulsador dedicado de selección. |
+| Modo de dificultad | Agrega colores a medida que sube la difucultad | Se utilizan todos los colores en todos los niveles. Aumentar la dificultad aumenta la velocidad de la secuencia. |
 
-<p align="center"><em>Tabla 2: Comparación preliminar entre la solución de referencia y el proyecto propuesto</em></p>
+<p align="center"><em>Tabla 2: Comparación entre la solución de referencia y el proyecto propuesto</em></p>
 
 ---
 
