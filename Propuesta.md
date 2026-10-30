@@ -140,11 +140,18 @@ A diferencia del ejemplo de referencia del "Simón Dice" que se brinda en las co
 
 En la tabla 2 se presentan las principales diferencias de diseño entre la solución de referencia y el proyecto propuesto. Esta comparación es preliminar y se completará, con el análisis del diseño e implementación de hardware y software, en la memoria final.
 
+En la tabla 2 se presentan las principales diferencias de diseño entre la solución de referencia y el proyecto propuesto, tomadas de sus respectivas tablas de requisitos. Esta comparación es preliminar y se completará, con el análisis del diseño e implementación de hardware y software, en la memoria final.
+
 | Aspecto | Solución de referencia | Proyecto propuesto |
 | :--- | :--- | :--- |
-| Sensor analógico | Sensor de luz LDR para ajustar el brillo de los LEDs mediante PWM. | Joystick analógico para navegar el menú. |
-| Navegación del menú | Exclusivamente con los cuatro botones del juego. | Joystick y un pulsador dedicado de selección. |
-| Modo de dificultad | Agrega colores a medida que sube la difucultad | Se utilizan todos los colores en todos los niveles. Aumentar la dificultad aumenta la velocidad de la secuencia. |
+| Sensor analógico | Sensor de luz LDR leído por el ADC. | Joystick analógico leído por el ADC. |
+| Brillo de los LEDs | Se ajusta automáticamente con PWM según la luz ambiente. | Sin ajuste de brillo. |
+| Navegación del menú | Exclusivamente con los cuatro botones del juego. | Joystick en movimiento horizontal y un pulsador dedicado de confirmación. |
+| Parámetros de dificultad | La dificultad puede afectar la velocidad y agregar más colores. | La dificultad solo modifica la velocidad de reproducción. |
+| Pantallas del LCD | Bienvenida, selección de dificultad, puntaje durante el juego y despedida. | Bienvenida, menú principal con dificultad y marcas previas, y nivel actual durante el juego. |
+| Audio | Tono por color, melodía al superar un nivel, secuencia de error y sonidos de menú. | Tono por color, tono grave de error y tonos cortos en el menú. No incluye melodía al superar un nivel. |
+| Datos en EEPROM | Puntaje máximo y, opcionalmente, configuración de dificultad u otros parámetros. | Puntaje récord y últimos puntajes. |
+| Modo de espera | No contemplado. | Atenuación del LCD tras 30 segundos sin interacción. |
 
 <p align="center"><em>Tabla 2: Comparación entre la solución de referencia y el proyecto propuesto</em></p>
 
