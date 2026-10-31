@@ -14,8 +14,7 @@
 
 Este proyecto pretende diseñar, desarrollar e implementar una versión del clásico juego de memoria "Simón Dice" como un sistema embebido. Como objetivo principal, el sistema deberá gestionar de manera concurrente la generación aleatoria de secuencias lumínicas y sonoras, la lectura de entradas de usuario (pulsadores), la realimentación audiovisual y la gestión de puntajes y niveles de dificultad progresivos.
 
-**Objetivos secundarios:**
-* Agregar EEPROM para usarla como memoria externa que almacene datos del usuario (como un historial de puntajes por partida y un puntaje récord).
+Además, el sistema incluirá una memoria EEPROM externa que almacene datos del usuario, como el historial de puntajes por partida y el puntaje récord.
 
 ---
 
@@ -36,9 +35,10 @@ A continuación, planteamos 3 casos diferentes para realizar el proyecto:
 
 * **Caso Avanzado:**
   * **Microcontrolador:** STM32 NUCLEO-F103RB.
+  * **Almacenamiento:** Memoria EEPROM externa.
   * **Interfaz de Usuario:** 4 pulsadores táctiles estándar y 4 LEDs comunes (de diferentes colores) con sus respectivas resistencias de limitación. Sensor analógico joystick (y otro  pulsador) para la navegación fluida por la interfaz y menú de selección de dificultad. La dificultad de la partida puede ser en modo fácil o difícil.
   * **Audio:** Buzzer pasivo controlado por PWM para reproducir melodías o tonos con mayor fidelidad (cada pulsador reproduce su propio tono).
-  * **Visualización:** Pantalla LCD 16x2 gráfica interactiva y menú de selección de dificultad.
+  * **Visualización:** Pantalla LCD 16x2 interactiva y menú de selección de dificultad.
 
 ---
 
@@ -50,6 +50,8 @@ Escogimos 5 características que consideramos importantes evaluar para este proy
 3. **Experiencia de usuario:** Evalúa la calidad esperada del juego desde la vista del usuario (peso: 7).
 4. **Complejidad de software:** La dificultad de poder implementar los componentes de hardware (peso: 5).
 5. **Complejidad de hardware:** La dificultad de poder implementar el código necesario de la parte de software (peso: 8).
+
+En la Tabla 1 se presenta la matriz comparativa de los tres casos planteados (Básico, Intermedio y Avanzado). Cada caso se puntuó de 1 a 10 en las cinco características definidas y luego se multiplicó por el peso correspondiente, obteniendo el puntaje ponderado y el puntaje total de cada alternativa.
 
 <table>
   <thead>
@@ -134,13 +136,28 @@ Escogimos 5 características que consideramos importantes evaluar para este proy
 
 A pesar de que en la matriz ponderada el Caso Básico obtuvo una puntuación más elevada debido a su menor costo y simplicidad de implementación, elegimos implementar el **Caso Avanzado** por la excelente experiencia que brinda al usuario gracias a una interfaz interactiva estilo "arcade" y una pantalla LCD para que el usuario se pueda manejar mejor con una interfaz visual. Además, exige una gestión de software más completa y profesional.
 
-A diferencia del ejemplo de referencia del "Simón Dice" que se brinda en las consignas del trabajo, decidimos agregar un sensor analógico de joystick en vez de un sensor de luz LDR que ajuste el brillo de los LEDs, y un pulsador extra que ayude en la navegación de la interfaz del usuario.
+A diferencia del ejemplo de referencia del "Simón Dice" que se brinda en las consignas del trabajo (https://github.com/tomas-condo/tdse-tf_2-02--/blob/97dc80b53a57eb331f7388a82d46ccadcac6fbcb/readme_requisitos_y_Casos.md), decidimos agregar un sensor analógico de joystick en vez de un sensor de luz LDR que ajuste el brillo de los LEDs, y un pulsador extra que ayude en la navegación de la interfaz del usuario.
+
+En la Tabla 2 se presentan las principales diferencias de diseño entre la solución de referencia y el proyecto propuesto, tomadas de sus respectivas tablas de requisitos. Esta comparación es preliminar y se completará, con el análisis del diseño e implementación de hardware y software, en la memoria final.
+
+| Aspecto | Solución de referencia | Proyecto propuesto |
+| :--- | :--- | :--- |
+| Sensor analógico | Sensor de luz LDR leído por el ADC. | Joystick analógico leído por el ADC. |
+| Brillo de los LEDs | Se ajusta automáticamente con PWM según la luz ambiente. | Sin ajuste de brillo. |
+| Navegación del menú | Exclusivamente con los cuatro botones del juego. | Joystick en movimiento horizontal y un pulsador dedicado de confirmación. |
+| Parámetros de dificultad | La dificultad puede afectar la velocidad y agregar más colores. | La dificultad solo modifica la velocidad de reproducción. |
+| Pantallas del LCD | Bienvenida, selección de dificultad, puntaje durante el juego y despedida. | Bienvenida, menú principal con dificultad y marcas previas, y nivel actual durante el juego. |
+| Audio | Tono por color, melodía al superar un nivel, secuencia de error y sonidos de menú. | Tono por color, tono grave de error y tonos cortos en el menú. No incluye melodía al superar un nivel. |
+| Datos en EEPROM | Puntaje máximo y, opcionalmente, configuración de dificultad u otros parámetros. | Puntaje récord y últimos puntajes. |
+| Modo de espera | No contemplado. | Atenuación del LCD tras 30 segundos sin interacción. |
+
+<p align="center"><em>Tabla 2: Comparación entre la solución de referencia y el proyecto propuesto</em></p>
 
 ---
 
 ### 1.5. Diagrama en bloques del sistema
 
-A continuación, presentamos el diagrama en bloques del sistema:
+En la Figura 1 se presenta el diagrama en bloques del sistema. El microcontrolador STM32 NUCLEO-F103RB es el bloque central: recibe las entradas de los cuatro pulsadores de juego, del pulsador de selección y del joystick analógico, y gobierna las salidas, que son los cuatro LEDs, el buzzer y la pantalla LCD 16x2. La pantalla LCD se utiliza como menú de navegación y para mostrar el estado de la partida, mientras que los LEDs y el buzzer trabajan en conjunto para reproducir las secuencias de luces y tonos propias del juego "Simón Dice". Además, el sistema incluye una memoria EEPROM externa, conectada al microcontrolador, que almacena la información de las partidas anteriores, como el historial de puntajes y el puntaje récord.
 
 <p align="center">
   <img src="https://github.com/tomaslotierzo/tdse-tf-_2026-2doC_01A-06/blob/main/Diagrama_en_Bloques.png" alt="Diagrama en bloques del sistema" width="500">
@@ -163,6 +180,8 @@ En conclusión, el desarrollo de este proyecto en Argentina representa una soluc
 ---
 
 ### 2.1. Requisitos del proyecto
+
+En la Tabla 3 se detallan los requisitos del proyecto, agrupados por funcionalidad. Cada requisito tiene un identificador único y una descripción de lo que el sistema deberá cumplir.
 
 | Grupo | ID | Descripción |
 | :--- | :--- | :--- |
@@ -200,11 +219,17 @@ En conclusión, el desarrollo de este proyecto en Argentina representa una soluc
 | **Robustez y Seguridad del Firmware** | 9.1 | El sistema iniciará manteniendo actuadores, LEDs y audio inactivos hasta iniciar la partida. |
 | | 9.2 | Ante fallas de lectura o estados no válidos, el sistema mostrará un aviso de advertencia en pantalla sin bloquearse. |
 
-<p align="center"><em>Tabla 2: Requisitos del proyecto</em></p>
+<p align="center"><em>Tabla 3: Requisitos del proyecto</em></p>
 
 ---
 
-### 2.2. Caso de Uso 1: Inicio de partida
+### 2.2. Casos de Uso
+
+En las Tablas 4 a 6 se presentan tres casos de uso del sistema: inicio de partida, ejecución de ronda y validación de secuencia, y cierre de partida con registro de récord. Cada tabla describe el disparador, las precondiciones, el flujo principal y los flujos alternativos.
+
+---
+
+#### 2.2.1. Caso de Uso 1: Inicio de partida
 
 | Elemento | Definición |
 | :--- | :--- |
@@ -213,11 +238,11 @@ En conclusión, el desarrollo de este proyecto en Argentina representa una soluc
 | **Flujo principal** | El jugador mueve el joystick analógico horizontalmente para desplazarse entre las opciones del menú ("Modo Fácil", "Modo Difícil", "Ver Récord"). El LCD actualiza la posición del cursor de navegación en tiempo real. El jugador presiona el pulsador de selección del menú para confirmar la dificultad elegida. El sistema emite un tono corto de confirmación en el buzzer pasivo. El sistema inicializa las variables de puntaje, genera la semilla aleatoria y muestra en la pantalla LCD el mensaje de inicio junto al nivel 1. El juego pasa al estado activo de emisión de secuencia. |
 | **Flujos alternativos** | **a) Inactividad en el menú:** Si no se detecta movimiento en el joystick ni pulsaciones durante 30 segundos, el sistema entra en un modo de espera (pantalla de reposo) atenuando el brillo del LCD hasta nueva interacción. |
 
-<p align="center"><em>Tabla 3: Caso de uso 1: Inicio de partida</em></p>
+<p align="center"><em>Tabla 4: Caso de uso 1: Inicio de partida</em></p>
 
 ---
 
-### 2.3. Caso de Uso 2: Ejecución de ronda y validación de secuencia
+#### 2.2.2. Caso de Uso 2: Ejecución de ronda y validación de secuencia
 
 | Elemento | Definición |
 | :--- | :--- |
@@ -226,11 +251,11 @@ En conclusión, el desarrollo de este proyecto en Argentina representa una soluc
 | **Flujo principal** | El microcontrolador añade un nuevo paso/color aleatorio a la secuencia objetivo. El sistema reproduce la secuencia en los LEDs y el buzzer: en Modo Fácil emite la secuencia completa acumulada a una velocidad lenta; en Modo Difícil emite la secuencia completa a velocidad rápida. El jugador repite la secuencia presionando los 4 pulsadores de juego. Por cada pulsación, se aplica el filtro de debouncing, se ilumina el LED correspondiente y se emite su frecuencia de audio en el buzzer. El sistema compara cada paso ingresado con el patrón objetivo. Al completar correctamente el patrón, se incrementa el nivel y se actualiza el LCD. |
 | **Flujos alternativos** | **a) El jugador presiona un botón equivocado:** El sistema detecta el desacoplamiento, detiene inmediatamente la lectura de pulsadores y deriva al caso de cierre por error (Game Over).<br>**b) El jugador excede el tiempo límite de respuesta (Timeout):** Si transcurre el tiempo máximo configurado sin recibir pulsación, la ronda se da por perdida automáticamente. |
 
-<p align="center"><em>Tabla 4: Caso de uso 2: Ejecución de ronda y validación de secuencia</em></p>
+<p align="center"><em>Tabla 5: Caso de uso 2: Ejecución de ronda y validación de secuencia</em></p>
 
 ---
 
-### 2.4. Caso de Uso 3: Cierre de partida y registro de récord
+#### 2.2.3. Caso de Uso 3: Cierre de partida y registro de récord
 
 | Elemento | Definición |
 | :--- | :--- |
@@ -239,4 +264,4 @@ En conclusión, el desarrollo de este proyecto en Argentina representa una soluc
 | **Flujo principal** | El sistema detiene la ronda y activa una señal de error (destello simultáneo de los 4 LEDs y tono grave característico en el buzzer pasivo por PWM). La pantalla LCD cambia a la interfaz de "Game Over", mostrando la puntuación final (hasta qué nivel llegó) obtenida por el jugador. El microcontrolador lee la memoria EEPROM externa para comparar el puntaje de la partida con el récord histórico registrado. Si el puntaje actual supera al récord guardado, el sistema escribe la nueva marca en la EEPROM y se muestra el mensaje "¡NUEVO RÉCORD!" en la pantalla LCD. Tras transcurrir 5 segundos, el sistema regresa automáticamente al menú principal. |
 | **Flujos alternativos** | **a) El puntaje obtenido no supera el récord previo:** La pantalla LCD simplemente muestra la marca obtenida y el récord histórico vigente sin realizar escrituras en la memoria EEPROM.<br>**b) Reinicio manual durante el "Game Over":** Si el jugador presiona el pulsador de selección antes de los 5 segundos, el sistema salta la espera y regresa de inmediato al menú principal. |
 
-<p align="center"><em>Tabla 5: Caso de uso 3: Cierre de partida y registro de récord</em></p>
+<p align="center"><em>Tabla 6: Caso de uso 3: Cierre de partida y registro de récord</em></p>
