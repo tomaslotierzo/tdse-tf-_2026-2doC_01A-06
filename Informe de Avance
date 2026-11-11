@@ -1,0 +1,95 @@
+
+ # **Juego Interactivo Simon Dice**
+ ## **Informe de Avance**
+
+**Autor**
+
+**0**
+
+**Fecha: 11/11/2026**
+
+**2do cuatrimestre 2026**
+
+| Estado | Descripción | 
+| ----- | ----- | 
+| 🟢 | Ya implementado | 
+| 🟡 | En proceso de implementarse | 
+| 🔴 | No se implementará | 
+
+#### **Lógica del Juego**
+
+| Req ID | Descripción | Estado | 
+| ----- | ----- | ----- | 
+| 1.1 | El microcontrolador generará una secuencia de colores aleatoria mediante un algoritmo pseudoaleatorio. | 🟡 | 
+| 1.2 | El usuario ingresará la secuencia memorizada mediante cuatro pulsadores de juego asignados a cada LED. | 🟡 | 
+| 1.3 | El sistema evaluará en tiempo real cada pulsación del usuario comparándola contra el patrón objetivo guardado. | 🟡 | 
+| 1.4 | Si lo que ingresó el usuario es correcto, el sistema aumentará el nivel y agregará un paso más al patrón. | 🟡 | 
+| 1.5 | Ante un fallo de ingreso, el sistema detendrá la partida, indicará el error y mostrará las estadísticas finales. | 🟡 | 
+| 1.6 | En modo fácil, al inicio de cada ronda se reproducirá el patrón completo acumulado hasta el momento. | 🟡 | 
+| 1.7 | En modo Difícil, al inicio de cada ronda se reproducirá con mayor rapidez el patrón completo acumulado hasta el momento. | 🟡 | 
+
+#### **Interfaz Audiovisual Base**
+
+| Req ID | Descripción | Estado | 
+| ----- | ----- | ----- | 
+| 2.1 | Cada uno de los 4 LEDs de juego estará vinculado a un color distinto y un tono específico de audio. | 🟡 | 
+| 2.2 | Durante la emisión automática de la secuencia, los LEDs correspondientes se iluminarán con un temporizador. | 🟡 | 
+| 2.3 | La activación de cualquier pulsador iluminará su LED asociado de forma continua durante el tiempo de presión. | 🟡 | 
+| 2.4 | Se filtrarán los rebotes mecánicos de todos los pulsadores usando el debounce por software. | 🟡 | 
+| 2.5 | Se gestionará la lectura de entradas con suficiente frecuencia para no perder pulsaciones rápidas del usuario. | 🟡 | 
+
+#### **Control Analógico**
+
+| Req ID | Descripción | Estado | 
+| ----- | ----- | ----- | 
+| 3.1 | Se incluirá un joystick analógico conectado a los canales del ADC del STM32. | 🟡 | 
+| 3.2 | Sólo se usarán movimientos horizontales del joystick analógico para la navegación del menú. | 🟡 | 
+
+#### **Pantalla LCD**
+
+| Req ID | Descripción | Estado | 
+| ----- | ----- | ----- | 
+| 4.1 | Una pantalla LCD de 16x2 exhibirá el estado general de la partida, configuraciones y puntajes. | 🟡 | 
+| 4.2 | Al inicializar el equipo, la pantalla presentará un mensaje inicial de bienvenida. | 🟡 | 
+| 4.3 | La pantalla mostrará el menú principal para seleccionar el nivel de dificultad y consultar marcas previas. | 🟡 | 
+| 4.4 | Durante el transcurso del juego, el LCD indicará en tiempo real el nivel actual. | 🟡 | 
+
+#### **Menú de Interacción**
+
+| Req ID | Descripción | Estado | 
+| ----- | ----- | ----- | 
+| 5.1 | La navegación por el menú interactivo se realizará mediante el joystick analógico y pulsadores dedicados de selección. | 🟡 | 
+| 5.2 | Se dispondrá de un botón extra para confirmar la selección entre opciones. | 🟡 | 
+| 5.3 | El LCD actualizará el cursor y resaltará la opción activa seleccionada por el usuario antes de confirmar. | 🟡 | 
+| 5.4 | Al perder el juego se volverá al menú interactivo. | 🟡 | 
+
+#### **Sistema de Audio**
+
+| Req ID | Descripción | Estado | 
+| ----- | ----- | ----- | 
+| 6.1 | Un zumbador (buzzer pasivo) accionado por PWM generará las frecuencias sonoras. | 🟡 | 
+| 6.2 | Cada botón o color emitirá un tono diferente. | 🟡 | 
+| 6.3 | Al cometer un error en la secuencia, el buzzer emitirá un tono grave característico. | 🟡 | 
+| 6.4 | La interacción con los elementos del menú principal emitirá tonos cortos de confirmación o movimiento. | 🟡 | 
+
+#### **Configuración de Dificultad**
+
+| Req ID | Descripción | Estado | 
+| ----- | ----- | ----- | 
+| 7.1 | Habrán dos configuraciones de partida: Fácil (patrones lentos) y Difícil (patrones rápidos). | 🟡 | 
+
+#### **Persistencia en Memoria (EEPROM)**
+
+| Req ID | Descripción | Estado | 
+| ----- | ----- | ----- | 
+| 8.1 | Se guardará el puntaje récord en la EEPROM para evitar su pérdida al apagar el equipo. | 🟡 | 
+| 8.2 | Los últimos puntajes se guardarán también en la memoria EEPROM. | 🟡 | 
+| 8.3 | Se podrán consultar los puntajes en el menú (no se podrá durante una partida). | 🟡 | 
+| 8.4 | Se integrará una opción en el menú que permita resetear los datos del récord guardados. | 🟡 | 
+
+#### **Robustez y Seguridad del Firmware**
+
+| Req ID | Descripción | Estado | 
+| ----- | ----- | ----- | 
+| 9.1 | El sistema iniciará manteniendo actuadores, LEDs y audio inactivos hasta iniciar la partida. | 🟡 | 
+| 9.2 | Ante fallas de lectura o estados no válidos, el sistema mostrará un aviso de advertencia en pantalla sin bloquearse. | 🔴 | 
