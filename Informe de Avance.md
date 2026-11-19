@@ -1,3 +1,4 @@
+<img src="https://github.com/tomaslotierzo/tdse-tf-_2026-2doC_01A-06/blob/main/logo-fiuba.png" alt="logo" width="50%">
 
  # **Juego Interactivo Simon Dice**
  ## **Informe de Avance**
@@ -22,11 +23,11 @@
 
 | Req ID | Descripción | Estado | 
 | ----- | ----- | ----- | 
-| 1.1 | El microcontrolador generará una secuencia de colores aleatoria mediante un algoritmo pseudoaleatorio. | 🟡 | 
-| 1.2 | El usuario ingresará la secuencia memorizada mediante cuatro pulsadores de juego asignados a cada LED. | 🟡 | 
-| 1.3 | El sistema evaluará en tiempo real cada pulsación del usuario comparándola contra el patrón objetivo guardado. | 🟡 | 
-| 1.4 | Si lo que ingresó el usuario es correcto, el sistema aumentará el nivel y agregará un paso más al patrón. | 🟡 | 
-| 1.5 | Ante un fallo de ingreso, el sistema detendrá la partida, indicará el error y mostrará las estadísticas finales. | 🟡 | 
+| 1.1 | El microcontrolador generará una secuencia de colores aleatoria mediante un algoritmo pseudoaleatorio. | 🟢 | 
+| 1.2 | El usuario ingresará la secuencia memorizada mediante cuatro pulsadores de juego asignados a cada LED. | 🟢 | 
+| 1.3 | El sistema evaluará en tiempo real cada pulsación del usuario comparándola contra el patrón objetivo guardado. | 🟢 | 
+| 1.4 | Si lo que ingresó el usuario es correcto, el sistema aumentará el nivel y agregará un paso más al patrón. | 🟢 | 
+| 1.5 | Ante un fallo de ingreso, el sistema detendrá la partida, indicará el error y mostrará las estadísticas finales. | 🔴 | 
 | 1.6 | En modo fácil, al inicio de cada ronda se reproducirá el patrón completo acumulado hasta el momento. | 🟡 | 
 | 1.7 | En modo Difícil, al inicio de cada ronda se reproducirá con mayor rapidez el patrón completo acumulado hasta el momento. | 🟡 | 
 
@@ -35,9 +36,9 @@
 | Req ID | Descripción | Estado | 
 | ----- | ----- | ----- | 
 | 2.1 | Cada uno de los 4 LEDs de juego estará vinculado a un color distinto y un tono específico de audio. | 🟡 | 
-| 2.2 | Durante la emisión automática de la secuencia, los LEDs correspondientes se iluminarán con un temporizador. | 🟡 | 
-| 2.3 | La activación de cualquier pulsador iluminará su LED asociado de forma continua durante el tiempo de presión. | 🟡 | 
-| 2.4 | Se filtrarán los rebotes mecánicos de todos los pulsadores usando el debounce por software. | 🟡 | 
+| 2.2 | Durante la emisión automática de la secuencia, los LEDs correspondientes se iluminarán con un temporizador. | 🟢 | 
+| 2.3 | La activación de cualquier pulsador iluminará su LED asociado de forma continua durante el tiempo de presión. | 🟢 | 
+| 2.4 | Se filtrarán los rebotes mecánicos de todos los pulsadores usando el debounce por software. | 🟢 | 
 | 2.5 | Se gestionará la lectura de entradas con suficiente frecuencia para no perder pulsaciones rápidas del usuario. | 🟡 | 
 
 #### **Control Analógico**
@@ -93,5 +94,5 @@
 
 | Req ID | Descripción | Estado | 
 | ----- | ----- | ----- | 
-| 9.1 | El sistema iniciará manteniendo actuadores, LEDs y audio inactivos hasta iniciar la partida. | 🟡 | 
+| 9.1 | El sistema iniciará manteniendo actuadores, LEDs y audio inactivos hasta iniciar la partida. | 🟢 | 
 | 9.2 | Ante fallas de lectura o estados no válidos, el sistema mostrará un aviso de advertencia en pantalla sin bloquearse. | 🔴 | 
